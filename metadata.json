@@ -1,0 +1,8 @@
+{
+  "name": "San Takki Любино — Меню",
+  "description": "Электронное интерактивное меню San Takki (Любино) с блюдами из группы VK, категориями и корзиной.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
