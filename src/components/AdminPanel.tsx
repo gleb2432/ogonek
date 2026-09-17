@@ -103,9 +103,9 @@ export function AdminPanel({
   };
 
   return (
-    <div className="flex h-screen bg-stone-50 font-sans text-stone-900 overflow-hidden w-full flex-col lg:flex-row">
+    <div className="flex h-screen bg-stone-50 font-sans text-stone-900 overflow-hidden w-full flex-col md:flex-row">
       {/* Mobile Admin Bar */}
-      <div className="lg:hidden bg-stone-900 text-stone-300 p-3 px-4 flex items-center justify-between border-b border-stone-800">
+      <div className="md:hidden bg-stone-900 text-stone-300 p-3 px-4 flex items-center justify-between border-b border-stone-800">
         <div className="flex items-center gap-3">
           <img src="/logo.jpg" alt="San Takki" className="w-9 h-9 rounded-xl object-cover border border-stone-700 shrink-0" />
           <div>
@@ -160,7 +160,7 @@ export function AdminPanel({
       </div>
 
       {/* Admin Sidebar */}
-      <aside className="hidden lg:flex w-[280px] bg-stone-900 text-stone-300 flex-col z-20 shrink-0">
+      <aside className="hidden md:flex w-[240px] lg:w-[280px] bg-stone-900 text-stone-300 flex-col z-20 shrink-0">
         <div className="p-6 border-b border-stone-800 flex items-center gap-3.5">
           <img 
             src="/logo.jpg" 

@@ -98,9 +98,9 @@ export function MenuApp({
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="flex h-screen bg-stone-50 font-sans text-stone-900 overflow-hidden w-full flex-col lg:flex-row">
-      {/* Mobile Top Header (below lg) */}
-      <header className="lg:hidden bg-white border-b border-stone-200 px-4 py-3 flex items-center justify-between z-30 shrink-0 shadow-sm">
+    <div className="flex h-screen bg-stone-50 font-sans text-stone-900 overflow-hidden w-full flex-col md:flex-row">
+      {/* Mobile Top Header (only on small phones below md) */}
+      <header className="md:hidden bg-white border-b border-stone-200 px-4 py-3 flex items-center justify-between z-30 shrink-0 shadow-sm">
         <button
           type="button"
           onClick={onSecretLogoTap}
@@ -165,8 +165,8 @@ export function MenuApp({
         </div>
       </header>
 
-      {/* Mobile Category Horizontal Scroll Bar */}
-      <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-stone-200 px-3 py-2.5 overflow-x-auto no-scrollbar flex items-center gap-2 z-20 shrink-0">
+      {/* Mobile Category Horizontal Scroll Bar (only on small phones below md) */}
+      <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-stone-200 px-3 py-2.5 overflow-x-auto no-scrollbar flex items-center gap-2 z-20 shrink-0">
         <button
           onClick={() => handleCategorySelect('all')}
           className={`px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all flex items-center gap-1.5 ${
@@ -204,24 +204,24 @@ export function MenuApp({
         })}
       </div>
 
-      {/* Desktop Left Sidebar (lg+) */}
-      <aside className="hidden lg:flex w-[320px] bg-white border-r border-stone-200 flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] shrink-0">
+      {/* Left Sidebar (Tablets and Desktops: md+) */}
+      <aside className="hidden md:flex w-[260px] lg:w-[290px] xl:w-[320px] bg-white border-r border-stone-200 flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] shrink-0">
         {/* Logo & Brand Header */}
-        <div className="p-6 border-b border-stone-100">
+        <div className="p-4 lg:p-6 border-b border-stone-100">
           <button
             type="button"
             onClick={onSecretLogoTap}
-            className="flex items-center gap-4 text-left active:scale-95 transition-transform w-full group"
+            className="flex items-center gap-3 lg:gap-4 text-left active:scale-95 transition-transform w-full group"
             title="San Takki (4 быстрых нажатия для вызова PIN-кода персонала)"
           >
             <img 
               src="/logo.jpg" 
               alt="San Takki" 
-              className="w-14 h-14 rounded-2xl object-cover border border-stone-200 shadow-md shrink-0 group-hover:shadow-lg transition-shadow"
+              className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl object-cover border border-stone-200 shadow-md shrink-0 group-hover:shadow-lg transition-shadow"
             />
             <div className="min-w-0 flex-1">
-              <h1 className="text-2xl font-black tracking-tight text-stone-900 uppercase leading-none truncate">San Takki</h1>
-              <p className="text-xs text-red-600 uppercase tracking-wider font-extrabold mt-1">Любино • Суши и Пицца</p>
+              <h1 className="text-xl lg:text-2xl font-black tracking-tight text-stone-900 uppercase leading-none truncate">San Takki</h1>
+              <p className="text-[11px] lg:text-xs text-red-600 uppercase tracking-wider font-extrabold mt-1">Любино • Суши и Пицца</p>
               <div className="flex items-center gap-2 mt-1">
                 <p className="text-[11px] text-stone-400 font-medium">{products.length} позиций</p>
                 {isKioskEnabled && (
@@ -235,20 +235,20 @@ export function MenuApp({
         </div>
 
         {/* Categories List */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-1.5">
+        <div className="flex-1 overflow-y-auto p-3 lg:p-4 space-y-1.5">
           <button
             onClick={() => handleCategorySelect('all')}
-            className={`w-full text-left px-4 py-3.5 rounded-2xl font-bold text-base transition-all flex items-center justify-between ${
+            className={`w-full text-left px-3.5 py-3 lg:px-4 lg:py-3.5 rounded-2xl font-bold text-sm lg:text-base transition-all flex items-center justify-between ${
               selectedCategoryId === 'all' 
                 ? 'bg-red-50 text-red-700 shadow-sm ring-1 ring-red-200' 
                 : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
             }`}
           >
             <span className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-red-600" />
-              Все категории
+              <Sparkles className="w-4 h-4 text-red-600 shrink-0" />
+              <span>Все категории</span>
             </span>
-            <span className={`text-xs px-2 py-1 rounded-lg font-bold ${
+            <span className={`text-xs px-2 py-0.5 lg:py-1 rounded-lg font-bold ${
               selectedCategoryId === 'all' ? 'bg-red-200/70 text-red-800' : 'bg-stone-100 text-stone-500'
             }`}>
               {products.length}
@@ -266,14 +266,14 @@ export function MenuApp({
               <button
                 key={c.id}
                 onClick={() => handleCategorySelect(c.id)}
-                className={`w-full text-left px-4 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-between ${
+                className={`w-full text-left px-3.5 py-2.5 lg:px-4 lg:py-3 rounded-2xl font-bold text-sm lg:text-base transition-all flex items-center justify-between ${
                   isSelected 
                     ? 'bg-red-50 text-red-700 shadow-sm ring-1 ring-red-200' 
                     : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                 }`}
               >
                 <span className="truncate">{c.name}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-lg font-bold ${
+                <span className={`text-xs px-2 py-0.5 rounded-lg font-bold shrink-0 ${
                   isSelected ? 'bg-red-200/70 text-red-800' : 'bg-stone-100 text-stone-400'
                 }`}>
                   {count}
@@ -284,12 +284,12 @@ export function MenuApp({
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-stone-100 bg-stone-50/50 space-y-2">
+        <div className="p-3 lg:p-4 border-t border-stone-100 bg-stone-50/50 space-y-2">
           {isKioskEnabled ? (
             <div className="space-y-1.5">
               <button 
                 onClick={onOpenAdmin} 
-                className="flex items-center justify-between w-full p-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-amber-900 shadow-sm transition-colors text-left"
+                className="flex items-center justify-between w-full p-2.5 lg:p-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-amber-900 shadow-sm transition-colors text-left"
                 title="Режим стола включен. Требуется PIN для выхода"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
@@ -313,18 +313,18 @@ export function MenuApp({
             <>
               <button 
                 onClick={onToggleKiosk} 
-                className="flex items-center justify-center gap-2.5 w-full p-3 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl text-red-700 shadow-sm transition-colors text-xs font-bold"
+                className="flex items-center justify-center gap-2 w-full p-2.5 lg:p-3 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl text-red-700 shadow-sm transition-colors text-xs font-bold"
                 title="Заблокировать планшет в режиме меню перед выдачей гостю"
               >
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                <span>Включить защиту стола (Киоск)</span>
+                <ShieldCheck className="w-4 h-4 text-red-600 shrink-0" />
+                <span className="truncate">Включить защиту стола (Киоск)</span>
               </button>
               <button 
                 onClick={onOpenAdmin} 
-                className="flex items-center justify-center gap-2.5 w-full p-2.5 bg-white rounded-xl border border-stone-200 shadow-sm hover:border-stone-300 hover:bg-stone-50 transition-colors"
+                className="flex items-center justify-center gap-2 w-full p-2.5 bg-white rounded-xl border border-stone-200 shadow-sm hover:border-stone-300 hover:bg-stone-50 transition-colors"
               >
-                <Settings className="w-4 h-4 text-stone-500" />
-                <span className="font-bold text-xs text-stone-700">Управление меню</span>
+                <Settings className="w-4 h-4 text-stone-500 shrink-0" />
+                <span className="font-bold text-xs text-stone-700 truncate">Управление меню</span>
               </button>
             </>
           )}
@@ -334,10 +334,10 @@ export function MenuApp({
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col h-full overflow-hidden relative bg-stone-50">
-        {/* Desktop Sticky Header */}
-        <header className="px-6 lg:px-10 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-stone-50/90 backdrop-blur-xl sticky top-0 z-10 border-b border-stone-200/60">
+        {/* Tablet & Desktop Sticky Header */}
+        <header className="px-4 md:px-6 lg:px-10 py-4 lg:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 lg:gap-4 bg-stone-50/90 backdrop-blur-xl sticky top-0 z-10 border-b border-stone-200/60">
           <div className="flex items-center gap-3 flex-wrap">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-stone-900">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-stone-900">
               {selectedCategoryId === 'all' ? 'Все блюда меню' : currentCategory?.name || 'Меню'}
             </h2>
             <span className="text-sm sm:text-base font-bold text-stone-400">
@@ -353,7 +353,7 @@ export function MenuApp({
 
           <div className="flex items-center gap-3">
             {/* Search Box */}
-            <div className="relative flex-1 sm:w-64 lg:w-72">
+            <div className="relative flex-1 sm:w-56 md:w-56 lg:w-72">
               <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
@@ -372,20 +372,20 @@ export function MenuApp({
               )}
             </div>
 
-            {/* Desktop Cart Button */}
+            {/* Desktop & Tablet Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="hidden lg:flex items-center gap-4 px-6 py-2.5 bg-white rounded-2xl shadow-sm border border-stone-200 hover:border-red-300 hover:shadow-md transition-all group active:scale-95"
+              className="hidden md:flex items-center gap-3 lg:gap-4 px-4 lg:px-6 py-2.5 bg-white rounded-2xl shadow-sm border border-stone-200 hover:border-red-300 hover:shadow-md transition-all group active:scale-95"
             >
               <div className="relative">
-                <ShoppingCart className="w-6 h-6 text-stone-700 group-hover:text-red-600 transition-colors" />
+                <ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6 text-stone-700 group-hover:text-red-600 transition-colors" />
                 {cartItemsCount > 0 && (
                   <span className="absolute -top-2.5 -right-2.5 bg-red-600 text-white text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">
                     {cartItemsCount}
                   </span>
                 )}
               </div>
-              <span className="font-black text-lg text-stone-900">{total} ₽</span>
+              <span className="font-black text-base lg:text-lg text-stone-900">{total} ₽</span>
             </button>
           </div>
         </header>
@@ -394,7 +394,7 @@ export function MenuApp({
         <div 
           ref={productsContainerRef}
           id="products-scroll-container"
-          className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-10 pt-4"
+          className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-10 pt-4"
           style={{ overscrollBehaviorY: 'contain' }}
         >
           {searchQuery && (
@@ -409,7 +409,7 @@ export function MenuApp({
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {filteredProducts.map(product => (
               <ProductCard
                 key={product.id}
