@@ -205,28 +205,28 @@ export function MenuApp({
       </div>
 
       {/* Left Sidebar (Tablets and Desktops: md+) */}
-      <aside className="hidden md:flex w-[260px] lg:w-[290px] xl:w-[320px] bg-white border-r border-stone-200 flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] shrink-0">
+      <aside className="hidden md:flex w-52 md:w-56 lg:w-64 xl:w-72 bg-white border-r border-stone-200 flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] shrink-0">
         {/* Logo & Brand Header */}
-        <div className="p-4 lg:p-6 border-b border-stone-100">
+        <div className="p-3 md:p-3.5 border-b border-stone-100">
           <button
             type="button"
             onClick={onSecretLogoTap}
-            className="flex items-center gap-3 lg:gap-4 text-left active:scale-95 transition-transform w-full group"
+            className="flex items-center gap-2.5 md:gap-3 text-left active:scale-95 transition-transform w-full group"
             title="San Takki (4 быстрых нажатия для вызова PIN-кода персонала)"
           >
             <img 
               src="/logo.jpg" 
               alt="San Takki" 
-              className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl object-cover border border-stone-200 shadow-md shrink-0 group-hover:shadow-lg transition-shadow"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-xl object-cover border border-stone-200 shadow-xs shrink-0 group-hover:shadow-md transition-shadow"
             />
             <div className="min-w-0 flex-1">
-              <h1 className="text-xl lg:text-2xl font-black tracking-tight text-stone-900 uppercase leading-none truncate">San Takki</h1>
-              <p className="text-[11px] lg:text-xs text-red-600 uppercase tracking-wider font-extrabold mt-1">Любино • Суши и Пицца</p>
-              <div className="flex items-center gap-2 mt-1">
-                <p className="text-[11px] text-stone-400 font-medium">{products.length} позиций</p>
+              <h1 className="text-lg md:text-xl font-black tracking-tight text-stone-900 uppercase leading-none truncate">San Takki</h1>
+              <p className="text-[10px] md:text-[11px] text-red-600 uppercase tracking-wider font-extrabold mt-0.5">Любино • Меню</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <p className="text-[10px] text-stone-400 font-medium">{products.length} блюд</p>
                 {isKioskEnabled && (
-                  <span className="text-[10px] bg-amber-100 text-amber-900 font-extrabold px-1.5 py-0.5 rounded-md flex items-center gap-1 border border-amber-300">
-                    <Lock className="w-2.5 h-2.5" /> Заблокировано
+                  <span className="text-[9px] bg-amber-100 text-amber-900 font-extrabold px-1.5 py-0.2 rounded-md flex items-center gap-1 border border-amber-300">
+                    <Lock className="w-2 h-2" /> Киоск
                   </span>
                 )}
               </div>
@@ -235,27 +235,27 @@ export function MenuApp({
         </div>
 
         {/* Categories List */}
-        <div className="flex-1 overflow-y-auto p-3 lg:p-4 space-y-1.5">
+        <div className="flex-1 overflow-y-auto p-2 md:p-2.5 space-y-1">
           <button
             onClick={() => handleCategorySelect('all')}
-            className={`w-full text-left px-3.5 py-3 lg:px-4 lg:py-3.5 rounded-2xl font-bold text-sm lg:text-base transition-all flex items-center justify-between ${
+            className={`w-full text-left px-3 py-1.5 md:py-2 rounded-xl font-bold text-xs md:text-sm transition-all flex items-center justify-between ${
               selectedCategoryId === 'all' 
-                ? 'bg-red-50 text-red-700 shadow-sm ring-1 ring-red-200' 
+                ? 'bg-red-50 text-red-700 shadow-xs ring-1 ring-red-200' 
                 : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
             }`}
           >
             <span className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-red-600 shrink-0" />
+              <Sparkles className="w-3.5 h-3.5 text-red-600 shrink-0" />
               <span>Все категории</span>
             </span>
-            <span className={`text-xs px-2 py-0.5 lg:py-1 rounded-lg font-bold ${
+            <span className={`text-[11px] px-1.5 py-0.5 rounded-md font-bold ${
               selectedCategoryId === 'all' ? 'bg-red-200/70 text-red-800' : 'bg-stone-100 text-stone-500'
             }`}>
               {products.length}
             </span>
           </button>
 
-          <div className="pt-2 pb-1 px-2 text-[11px] font-bold uppercase tracking-wider text-stone-400">
+          <div className="pt-1.5 pb-0.5 px-2 text-[10px] font-bold uppercase tracking-wider text-stone-400">
             Разделы меню
           </div>
 
@@ -266,14 +266,14 @@ export function MenuApp({
               <button
                 key={c.id}
                 onClick={() => handleCategorySelect(c.id)}
-                className={`w-full text-left px-3.5 py-2.5 lg:px-4 lg:py-3 rounded-2xl font-bold text-sm lg:text-base transition-all flex items-center justify-between ${
+                className={`w-full text-left px-3 py-1.5 md:py-2 rounded-xl font-bold text-xs md:text-sm transition-all flex items-center justify-between ${
                   isSelected 
-                    ? 'bg-red-50 text-red-700 shadow-sm ring-1 ring-red-200' 
+                    ? 'bg-red-50 text-red-700 shadow-xs ring-1 ring-red-200' 
                     : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                 }`}
               >
                 <span className="truncate">{c.name}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-lg font-bold shrink-0 ${
+                <span className={`text-[11px] px-1.5 py-0.5 rounded-md font-bold shrink-0 ${
                   isSelected ? 'bg-red-200/70 text-red-800' : 'bg-stone-100 text-stone-400'
                 }`}>
                   {count}
@@ -284,46 +284,43 @@ export function MenuApp({
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-3 lg:p-4 border-t border-stone-100 bg-stone-50/50 space-y-2">
+        <div className="p-2 md:p-2.5 border-t border-stone-100 bg-stone-50/50 space-y-1.5">
           {isKioskEnabled ? (
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <button 
                 onClick={onOpenAdmin} 
-                className="flex items-center justify-between w-full p-2.5 lg:p-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-amber-900 shadow-sm transition-colors text-left"
+                className="flex items-center justify-between w-full p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-amber-900 shadow-xs transition-colors text-left"
                 title="Режим стола включен. Требуется PIN для выхода"
               >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-amber-200/80 flex items-center justify-center text-amber-900 shrink-0">
-                    <Lock className="w-4 h-4" />
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="w-7 h-7 rounded-lg bg-amber-200/80 flex items-center justify-center text-amber-900 shrink-0">
+                    <Lock className="w-3.5 h-3.5" />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-bold text-xs text-amber-950 truncate leading-tight">Защита включена</p>
-                    <p className="text-[10px] text-amber-700">Выход по PIN-коду</p>
+                    <p className="font-bold text-xs text-amber-950 truncate leading-tight">Защита стола</p>
+                    <p className="text-[9px] text-amber-700">Выход по PIN</p>
                   </div>
                 </div>
-                <span className="text-[11px] font-black bg-amber-200 text-amber-900 px-2 py-1 rounded-md">
+                <span className="text-[10px] font-black bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded-md">
                   ВЫХОД
                 </span>
               </button>
-              <p className="text-[10px] text-stone-400 text-center">
-                Секрет: 4 тапа по логотипу San Takki
-              </p>
             </div>
           ) : (
             <>
               <button 
                 onClick={onToggleKiosk} 
-                className="flex items-center justify-center gap-2 w-full p-2.5 lg:p-3 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl text-red-700 shadow-sm transition-colors text-xs font-bold"
+                className="flex items-center justify-center gap-1.5 w-full py-2 px-2.5 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl text-red-700 shadow-xs transition-colors text-xs font-bold"
                 title="Заблокировать планшет в режиме меню перед выдачей гостю"
               >
-                <ShieldCheck className="w-4 h-4 text-red-600 shrink-0" />
-                <span className="truncate">Включить защиту стола (Киоск)</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                <span className="truncate">Защита киоска</span>
               </button>
               <button 
                 onClick={onOpenAdmin} 
-                className="flex items-center justify-center gap-2 w-full p-2.5 bg-white rounded-xl border border-stone-200 shadow-sm hover:border-stone-300 hover:bg-stone-50 transition-colors"
+                className="flex items-center justify-center gap-1.5 w-full py-1.5 px-2.5 bg-white rounded-xl border border-stone-200 shadow-xs hover:border-stone-300 hover:bg-stone-50 transition-colors"
               >
-                <Settings className="w-4 h-4 text-stone-500 shrink-0" />
+                <Settings className="w-3.5 h-3.5 text-stone-500 shrink-0" />
                 <span className="font-bold text-xs text-stone-700 truncate">Управление меню</span>
               </button>
             </>
@@ -335,37 +332,37 @@ export function MenuApp({
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col h-full overflow-hidden relative bg-stone-50">
         {/* Tablet & Desktop Sticky Header */}
-        <header className="px-4 md:px-6 lg:px-10 py-4 lg:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 lg:gap-4 bg-stone-50/90 backdrop-blur-xl sticky top-0 z-10 border-b border-stone-200/60">
-          <div className="flex items-center gap-3 flex-wrap">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-stone-900">
+        <header className="px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-stone-50/90 backdrop-blur-xl sticky top-0 z-10 border-b border-stone-200/60">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-black tracking-tight text-stone-900">
               {selectedCategoryId === 'all' ? 'Все блюда меню' : currentCategory?.name || 'Меню'}
             </h2>
-            <span className="text-sm sm:text-base font-bold text-stone-400">
+            <span className="text-xs sm:text-sm font-bold text-stone-400">
               ({filteredProducts.length})
             </span>
             {!isOnline && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-300 shadow-sm" title="Автономный режим — меню работает без интернета">
-                <WifiOff className="w-3.5 h-3.5 text-amber-700" />
-                <span>Офлайн-режим</span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300 shadow-xs" title="Автономный режим — меню работает без интернета">
+                <WifiOff className="w-3 h-3 text-amber-700" />
+                <span>Офлайн</span>
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Search Box */}
-            <div className="relative flex-1 sm:w-56 md:w-56 lg:w-72">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <div className="relative flex-1 sm:w-48 md:w-52 lg:w-64">
+              <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Поиск по меню..."
-                className="w-full pl-10 pr-8 py-2.5 bg-white border border-stone-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm"
+                className="w-full pl-9 pr-7 py-1.5 md:py-2 bg-white border border-stone-200 rounded-xl text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-red-500 shadow-xs"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -375,17 +372,17 @@ export function MenuApp({
             {/* Desktop & Tablet Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="hidden md:flex items-center gap-3 lg:gap-4 px-4 lg:px-6 py-2.5 bg-white rounded-2xl shadow-sm border border-stone-200 hover:border-red-300 hover:shadow-md transition-all group active:scale-95"
+              className="hidden md:flex items-center gap-2.5 px-3.5 md:px-4 py-1.5 md:py-2 bg-white rounded-xl shadow-xs border border-stone-200 hover:border-red-300 hover:shadow-md transition-all group active:scale-95"
             >
               <div className="relative">
-                <ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6 text-stone-700 group-hover:text-red-600 transition-colors" />
+                <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 text-stone-700 group-hover:text-red-600 transition-colors" />
                 {cartItemsCount > 0 && (
-                  <span className="absolute -top-2.5 -right-2.5 bg-red-600 text-white text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full border-2 border-white shadow-xs">
                     {cartItemsCount}
                   </span>
                 )}
               </div>
-              <span className="font-black text-base lg:text-lg text-stone-900">{total} ₽</span>
+              <span className="font-black text-sm md:text-base text-stone-900">{total} ₽</span>
             </button>
           </div>
         </header>
@@ -394,12 +391,12 @@ export function MenuApp({
         <div 
           ref={productsContainerRef}
           id="products-scroll-container"
-          className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-10 pt-4"
+          className="flex-1 overflow-y-auto p-2.5 sm:p-3.5 md:p-4 lg:p-5 pt-3"
           style={{ overscrollBehaviorY: 'contain' }}
         >
           {searchQuery && (
-            <div className="mb-4 flex items-center justify-between bg-amber-50 border border-amber-200/70 px-4 py-2 rounded-xl text-xs sm:text-sm text-amber-800">
-              <span>Результаты поиска по запросу: <strong>«{searchQuery}»</strong></span>
+            <div className="mb-3 flex items-center justify-between bg-amber-50 border border-amber-200/70 px-3 py-1.5 rounded-xl text-xs text-amber-800">
+              <span>Результаты поиска: <strong>«{searchQuery}»</strong></span>
               <button 
                 onClick={() => handleCategorySelect(selectedCategoryId)}
                 className="font-bold text-amber-900 underline hover:no-underline ml-2"
@@ -409,7 +406,7 @@ export function MenuApp({
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4">
             {filteredProducts.map(product => (
               <ProductCard
                 key={product.id}

@@ -160,42 +160,42 @@ export function AdminPanel({
       </div>
 
       {/* Admin Sidebar */}
-      <aside className="hidden md:flex w-[240px] lg:w-[280px] bg-stone-900 text-stone-300 flex-col z-20 shrink-0">
-        <div className="p-6 border-b border-stone-800 flex items-center gap-3.5">
+      <aside className="hidden md:flex w-48 md:w-52 lg:w-60 bg-stone-900 text-stone-300 flex-col z-20 shrink-0">
+        <div className="p-3 md:p-3.5 border-b border-stone-800 flex items-center gap-2.5">
           <img 
             src="/logo.jpg" 
             alt="San Takki" 
-            className="w-12 h-12 rounded-2xl object-cover border border-stone-700 shadow-md shrink-0" 
+            className="w-9 h-9 md:w-10 md:h-10 rounded-xl object-cover border border-stone-700 shadow-xs shrink-0" 
           />
-          <div>
-            <h1 className="text-xl font-black text-white tracking-tight leading-tight">San Takki</h1>
-            <p className="text-xs text-red-400 font-bold">Любино • Админ</p>
-            <p className="text-[11px] text-stone-500 mt-0.5">{products.length} блюд, {categories.length} категорий</p>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-base md:text-lg font-black text-white tracking-tight leading-tight truncate">San Takki</h1>
+            <p className="text-[10px] md:text-xs text-red-400 font-bold">Любино • Админ</p>
+            <p className="text-[10px] text-stone-500 mt-0.5 truncate">{products.length} блюд, {categories.length} разд.</p>
           </div>
         </div>
 
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-2 md:p-2.5 space-y-1 overflow-y-auto">
           <button 
             onClick={() => setActiveTab('products')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-colors ${activeTab === 'products' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${activeTab === 'products' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
           >
-            <span className="flex items-center gap-3">
-              <LayoutGrid className="w-5 h-5" /> Товары
+            <span className="flex items-center gap-2.5">
+              <LayoutGrid className="w-4 h-4 md:w-5 md:h-5" /> Товары
             </span>
-            <span className={`text-xs px-2 py-0.5 rounded-md ${activeTab === 'products' ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-400'}`}>
+            <span className={`text-[11px] px-1.5 py-0.2 rounded-md ${activeTab === 'products' ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-400'}`}>
               {products.length}
             </span>
           </button>
           <button 
             onClick={() => setActiveTab('stoplist')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-colors ${activeTab === 'stoplist' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${activeTab === 'stoplist' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
           >
-            <span className="flex items-center gap-3">
-              <Ban className={`w-5 h-5 ${activeTab === 'stoplist' ? 'text-white' : 'text-amber-400'}`} /> Стоп-лист
+            <span className="flex items-center gap-2.5">
+              <Ban className={`w-4 h-4 md:w-5 md:h-5 ${activeTab === 'stoplist' ? 'text-white' : 'text-amber-400'}`} /> Стоп-лист
             </span>
-            <span className={`text-xs px-2.5 py-0.5 rounded-md font-bold ${
+            <span className={`text-[11px] px-1.5 py-0.2 rounded-md font-bold ${
               stoppedProducts.length > 0 
-                ? 'bg-amber-500 text-stone-950 shadow-sm' 
+                ? 'bg-amber-500 text-stone-950 shadow-xs' 
                 : (activeTab === 'stoplist' ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-400')
             }`}>
               {stoppedProducts.length}
@@ -203,101 +203,86 @@ export function AdminPanel({
           </button>
           <button 
             onClick={() => setActiveTab('categories')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-colors ${activeTab === 'categories' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${activeTab === 'categories' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
           >
-            <span className="flex items-center gap-3">
-              <List className="w-5 h-5" /> Категории
+            <span className="flex items-center gap-2.5">
+              <List className="w-4 h-4 md:w-5 md:h-5" /> Категории
             </span>
-            <span className={`text-xs px-2 py-0.5 rounded-md ${activeTab === 'categories' ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-400'}`}>
+            <span className={`text-[11px] px-1.5 py-0.2 rounded-md ${activeTab === 'categories' ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-400'}`}>
               {categories.length}
             </span>
           </button>
           <button 
             onClick={() => setActiveTab('kiosk')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-colors ${activeTab === 'kiosk' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${activeTab === 'kiosk' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
           >
-            <span className="flex items-center gap-3">
-              <Lock className="w-5 h-5" /> Защита стола / Киоск
+            <span className="flex items-center gap-2.5">
+              <Lock className="w-4 h-4 md:w-5 md:h-5" /> Киоск / Защита
             </span>
             {isKioskEnabled && (
-              <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-500 text-black font-extrabold">
+              <span className="text-[9px] px-1.5 py-0.2 rounded-md bg-amber-500 text-black font-extrabold">
                 ON
               </span>
             )}
           </button>
           <button 
             onClick={() => setActiveTab('offline')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-colors ${activeTab === 'offline' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${activeTab === 'offline' ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'hover:bg-stone-800 hover:text-white'}`}
           >
-            <span className="flex items-center gap-3">
-              <HardDrive className="w-5 h-5" /> Автономность / Офлайн
+            <span className="flex items-center gap-2.5">
+              <HardDrive className="w-4 h-4 md:w-5 md:h-5" /> Автономность
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-md bg-stone-800 text-stone-300 font-bold">
+            <span className="text-[9px] px-1.5 py-0.2 rounded-md bg-stone-800 text-stone-300 font-bold">
               100%
             </span>
           </button>
         </nav>
 
-        <div className="p-4 border-t border-stone-800 space-y-2">
+        <div className="p-2.5 md:p-3 border-t border-stone-800 space-y-1.5 shrink-0">
           <button 
             type="button"
             onClick={() => setDeleteConfirm({ type: 'reset_menu' })}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-stone-400 hover:bg-stone-800 hover:text-white transition-colors text-sm"
+            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl font-medium text-stone-400 hover:bg-stone-800 hover:text-white transition-colors text-xs"
             title="Восстановить меню из группы VK"
           >
-            <RotateCcw className="w-5 h-5 text-red-500" /> Меню из группы
+            <RotateCcw className="w-4 h-4 text-red-500 shrink-0" /> <span className="truncate">Меню из группы</span>
           </button>
           <button 
             onClick={onClose}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium hover:bg-stone-800 hover:text-white transition-colors"
+            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl font-bold bg-stone-800 hover:bg-stone-700 text-white transition-colors text-xs"
           >
-            <ArrowLeft className="w-5 h-5" /> В меню планшета
+            <ArrowLeft className="w-4 h-4 text-red-400 shrink-0" /> <span className="truncate">В меню планшета</span>
           </button>
         </div>
       </aside>
 
       {/* Admin Content */}
       <main className="flex-1 flex flex-col h-full overflow-hidden bg-white">
-        <header className="h-24 px-6 lg:px-10 flex items-center justify-between border-b border-stone-100">
-          <div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-stone-900">
+        <header className="h-14 md:h-16 px-4 md:px-6 flex items-center justify-between border-b border-stone-200 shrink-0 bg-white">
+          <div className="min-w-0">
+            <h2 className="text-lg md:text-xl font-bold text-stone-900 truncate">
               {activeTab === 'products' && 'Товары'}
               {activeTab === 'stoplist' && 'Стоп-лист (Закончившиеся блюда)'}
               {activeTab === 'categories' && 'Категории'}
               {activeTab === 'kiosk' && 'Защита планшета (Киоск)'}
               {activeTab === 'offline' && 'Автономная работа (100% Офлайн)'}
             </h2>
-            {activeTab === 'stoplist' && (
-              <p className="text-xs text-stone-500 mt-1">
-                Блюда в стоп-листе блокируются для заказа гостями и помечаются специальной меткой
-              </p>
-            )}
-            {activeTab === 'kiosk' && (
-              <p className="text-xs text-stone-500 mt-1">
-                Блокировка закрытия меню гостями • Доступ по секретной комбинации
-              </p>
-            )}
-            {activeTab === 'offline' && (
-              <p className="text-xs text-stone-500 mt-1">
-                Сохранение всех фото в память устройства • Работа без интернета • Экспорт и импорт
-              </p>
-            )}
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2.5 shrink-0">
             {activeTab === 'stoplist' && (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 {stoppedProducts.length > 0 && (
                   <button
                     type="button"
                     onClick={() => setDeleteConfirm({ type: 'unstop_all', count: stoppedProducts.length })}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-bold text-xs shadow-md transition-all active:scale-95"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs shadow-xs transition-all active:scale-95"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
+                    <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Снять всё со стопа</span>
                   </button>
                 )}
-                <span className={`text-xs font-bold px-3 py-2 rounded-xl border ${
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-xl border ${
                   stoppedProducts.length > 0
                     ? 'bg-amber-100 text-amber-950 border-amber-300'
                     : 'bg-emerald-50 text-emerald-800 border-emerald-200'
@@ -309,34 +294,34 @@ export function AdminPanel({
             {activeTab === 'products' && (
               <>
                 <div className="relative">
-                  <Search className="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                  <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input 
                     type="text" 
                     placeholder="Поиск..." 
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="pl-12 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 w-64 transition-all"
+                    className="pl-9 pr-3 py-1.5 bg-stone-50 border border-stone-200 rounded-xl text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 w-36 sm:w-44 md:w-56 transition-all"
                   />
                 </div>
                 <button 
                   onClick={() => setEditingProduct(null)}
-                  className="flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-2xl font-bold hover:bg-stone-800 transition-colors shadow-lg shadow-stone-900/20 active:scale-95"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 md:py-2 bg-stone-900 text-white rounded-xl font-bold hover:bg-stone-800 transition-colors shadow-sm text-xs md:text-sm active:scale-95"
                 >
-                  <Plus className="w-5 h-5" /> Добавить товар
+                  <Plus className="w-4 h-4" /> <span>Добавить</span>
                 </button>
               </>
             )}
             {activeTab === 'categories' && (
               <button 
                 onClick={() => setEditingCategory(null)}
-                className="flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-2xl font-bold hover:bg-stone-800 transition-colors shadow-lg shadow-stone-900/20 active:scale-95"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 md:py-2 bg-stone-900 text-white rounded-xl font-bold hover:bg-stone-800 transition-colors shadow-sm text-xs md:text-sm active:scale-95"
               >
-                <Plus className="w-5 h-5" /> Добавить категорию
+                <Plus className="w-4 h-4" /> <span>Добавить раздел</span>
               </button>
             )}
             {activeTab === 'kiosk' && (
               <div className="flex items-center gap-2">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold ${
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
                   isKioskEnabled 
                     ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' 
                     : 'bg-stone-100 text-stone-600 border border-stone-200'
@@ -349,7 +334,7 @@ export function AdminPanel({
           </div>
         </header>
 
-        <div ref={adminScrollRef} className="flex-1 overflow-y-auto p-6 lg:p-10 bg-stone-50/30">
+        <div ref={adminScrollRef} className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-5 bg-stone-50/40">
           {activeTab === 'kiosk' && (
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Quick Toggle Card */}
@@ -622,22 +607,22 @@ export function AdminPanel({
             </div>
           )}
           {activeTab === 'products' && (
-            <div className="bg-white border border-stone-200 rounded-3xl shadow-sm overflow-hidden">
-              <table className="w-full text-left border-collapse">
+            <div className="bg-white border border-stone-200 rounded-2xl shadow-xs overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[560px]">
                 <thead>
-                  <tr className="bg-stone-50/80 text-stone-500 border-b border-stone-200">
-                    <th className="font-semibold px-6 py-4 w-20">Фото</th>
-                    <th className="font-semibold px-6 py-4">Название</th>
-                    <th className="font-semibold px-6 py-4">Категория</th>
-                    <th className="font-semibold px-6 py-4">Цена</th>
-                    <th className="font-semibold px-6 py-4">Стоп-лист</th>
-                    <th className="font-semibold px-6 py-4 text-right">Действия</th>
+                  <tr className="bg-stone-50/80 text-stone-500 border-b border-stone-200 text-xs">
+                    <th className="font-semibold px-3 py-2.5 w-14">Фото</th>
+                    <th className="font-semibold px-3 py-2.5">Название</th>
+                    <th className="font-semibold px-3 py-2.5">Категория</th>
+                    <th className="font-semibold px-3 py-2.5">Цена</th>
+                    <th className="font-semibold px-3 py-2.5">Стоп-лист</th>
+                    <th className="font-semibold px-3 py-2.5 text-right">Действия</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-stone-100">
+                <tbody className="divide-y divide-stone-100 text-xs md:text-sm">
                   {filteredProducts.map(product => (
                     <tr key={product.id} className="hover:bg-stone-50/50 transition-colors">
-                      <td className="px-6 py-4">
+                      <td className="px-3 py-2">
                         <button
                           type="button"
                           onClick={() => setEditingProduct(product)}
@@ -645,40 +630,44 @@ export function AdminPanel({
                           title="Нажмите, чтобы сделать фото или загрузить"
                         >
                           {product.imageUrl ? (
-                            <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-stone-200 shadow-sm">
+                            <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-stone-200 shadow-xs">
                               <img 
                                 src={product.imageUrl} 
                                 alt={product.name} 
                                 className={`w-full h-full object-cover ${product.isAvailable === false ? 'grayscale opacity-70' : ''}`} 
                               />
                               <div className="absolute inset-0 bg-stone-900/60 opacity-0 group-hover/pic:opacity-100 flex items-center justify-center text-white transition-opacity">
-                                <Camera className="w-5 h-5 text-white" />
+                                <Camera className="w-4 h-4 text-white" />
                               </div>
                             </div>
                           ) : (
-                            <div className="w-12 h-12 rounded-xl bg-stone-100 group-hover/pic:bg-red-50 flex items-center justify-center text-stone-400 group-hover/pic:text-red-500 border border-stone-200 transition-colors">
-                              <Camera className="w-5 h-5" />
+                            <div className="w-10 h-10 rounded-lg bg-stone-100 group-hover/pic:bg-red-50 flex items-center justify-center text-stone-400 group-hover/pic:text-red-500 border border-stone-200 transition-colors">
+                              <Camera className="w-4 h-4" />
                             </div>
                           )}
                         </button>
                       </td>
-                      <td className="px-6 py-4 font-bold text-stone-900">
-                        <div className="flex items-center gap-2">
-                          <span>{product.name}</span>
+                      <td className="px-3 py-2 font-bold text-stone-900">
+                        <div className="flex items-center gap-1.5 max-w-[170px] md:max-w-[220px]">
+                          <span className="truncate" title={product.name}>{product.name}</span>
                           {product.isAvailable === false && (
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-200 text-amber-900">
+                            <span className="px-1.5 py-0.2 rounded-md text-[9px] font-black bg-amber-200 text-amber-900 shrink-0">
                               СТОП
                             </span>
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-stone-500">{categories.find(c => c.id === product.categoryId)?.name || '—'}</td>
-                      <td className="px-6 py-4 font-bold text-stone-900">{product.price} ₽</td>
-                      <td className="px-6 py-4">
+                      <td className="px-3 py-2 text-stone-500 text-xs whitespace-nowrap">
+                        {categories.find(c => c.id === product.categoryId)?.name || '—'}
+                      </td>
+                      <td className="px-3 py-2 font-black text-stone-900 whitespace-nowrap">
+                        {product.price} ₽
+                      </td>
+                      <td className="px-3 py-2 whitespace-nowrap">
                         <button
                           type="button"
                           onClick={() => toggleProductAvailability?.(product.id)}
-                          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border shadow-xs ${
+                          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border shadow-xs ${
                             product.isAvailable === false
                               ? 'bg-amber-100 text-amber-900 border-amber-300 hover:bg-emerald-50 hover:text-emerald-700'
                               : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-amber-50 hover:text-amber-800'
@@ -687,37 +676,37 @@ export function AdminPanel({
                         >
                           {product.isAvailable === false ? (
                             <>
-                              <Ban className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                              <Ban className="w-3 h-3 text-red-600 shrink-0" />
                               <span>На стопе</span>
                             </>
                           ) : (
                             <>
-                              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                              <span>В наличии</span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                              <span>В меню</span>
                             </>
                           )}
                         </button>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center justify-end gap-2">
+                      <td className="px-3 py-2 text-right whitespace-nowrap">
+                        <div className="flex items-center justify-end gap-1">
                           <button 
                             onClick={() => setEditingProduct(product)} 
-                            className="px-3 py-1.5 text-stone-600 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors flex items-center gap-1.5 text-xs font-semibold border border-stone-200"
+                            className="px-2 py-1 text-stone-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 text-xs font-semibold border border-stone-200"
                             title="Сделать фото или изменить товар"
                           >
-                            <Camera className="w-4 h-4 text-red-500" />
+                            <Camera className="w-3.5 h-3.5 text-red-500" />
                             <span>Фото</span>
                           </button>
-                          <button onClick={() => setEditingProduct(product)} className="p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors" title="Редактировать">
-                            <Edit2 className="w-4 h-4" />
+                          <button onClick={() => setEditingProduct(product)} className="p-1.5 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors" title="Редактировать">
+                            <Edit2 className="w-3.5 h-3.5" />
                           </button>
                           <button 
                             type="button"
                             onClick={() => setDeleteConfirm({ type: 'product', id: product.id, name: product.name })} 
-                            className="p-2 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" 
+                            className="p-1.5 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" 
                             title="Удалить"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       </td>
@@ -725,7 +714,7 @@ export function AdminPanel({
                   ))}
                   {filteredProducts.length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-6 py-12 text-center text-stone-400 font-medium text-lg">
+                      <td colSpan={6} className="px-3 py-8 text-center text-stone-400 font-medium text-sm">
                         Товары не найдены
                       </td>
                     </tr>
@@ -996,83 +985,83 @@ export function AdminPanel({
               </div>
 
               {/* Categories list table */}
-              <div className="bg-white border border-stone-200 rounded-3xl shadow-sm overflow-hidden">
-                <div className="px-6 py-4 bg-stone-50/80 border-b border-stone-200 flex items-center justify-between">
+              <div className="bg-white border border-stone-200 rounded-2xl shadow-xs overflow-x-auto">
+                <div className="px-4 py-3 bg-stone-50/80 border-b border-stone-200 flex items-center justify-between">
                   <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
                     Разделы меню ({categories.length})
                   </span>
-                  <span className="text-xs text-stone-400">
-                    Стрелки ↑ ↓ меняют порядок вкладок в меню планшета
+                  <span className="text-[11px] text-stone-400">
+                    Стрелки ↑ ↓ меняют порядок в меню
                   </span>
                 </div>
-                <table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse min-w-[480px]">
                   <thead>
-                    <tr className="bg-stone-50/40 text-stone-500 border-b border-stone-200 text-xs uppercase tracking-wider">
-                      <th className="font-semibold px-6 py-3 w-16 text-center">№</th>
-                      <th className="font-semibold px-6 py-3">Название</th>
-                      <th className="font-semibold px-6 py-3">Блюд</th>
-                      <th className="font-semibold px-6 py-3 text-center w-28">Порядок</th>
-                      <th className="font-semibold px-6 py-3 text-right">Действия</th>
+                    <tr className="bg-stone-50/40 text-stone-500 border-b border-stone-200 text-xs">
+                      <th className="font-semibold px-3 py-2 w-12 text-center">№</th>
+                      <th className="font-semibold px-3 py-2">Название</th>
+                      <th className="font-semibold px-3 py-2">Блюд</th>
+                      <th className="font-semibold px-3 py-2 text-center w-24">Порядок</th>
+                      <th className="font-semibold px-3 py-2 text-right">Действия</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-100">
+                  <tbody className="divide-y divide-stone-100 text-xs md:text-sm">
                     {categories.map((category, index) => {
                       const count = products.filter(p => p.categoryId === category.id).length;
                       const isFirst = index === 0;
                       const isLast = index === categories.length - 1;
                       return (
                         <tr key={category.id} className="hover:bg-stone-50/50 transition-colors">
-                          <td className="px-6 py-4 text-center">
-                            <span className="w-7 h-7 rounded-xl bg-stone-100 text-stone-600 inline-flex items-center justify-center font-bold text-xs">
+                          <td className="px-3 py-2 text-center">
+                            <span className="w-6 h-6 rounded-lg bg-stone-100 text-stone-600 inline-flex items-center justify-center font-bold text-xs">
                               {index + 1}
                             </span>
                           </td>
-                          <td className="px-6 py-4 font-bold text-stone-900 text-base">
+                          <td className="px-3 py-2 font-bold text-stone-900">
                             {category.name}
                           </td>
-                          <td className="px-6 py-4 text-stone-500">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full bg-stone-100 text-xs font-bold text-stone-700">
+                          <td className="px-3 py-2 text-stone-500">
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-stone-100 text-xs font-semibold text-stone-700">
                               {count} {count === 1 ? 'блюдо' : count > 1 && count < 5 ? 'блюда' : 'блюд'}
                             </span>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-3 py-2">
                             <div className="flex items-center justify-center gap-1">
                               <button
                                 type="button"
                                 disabled={isFirst}
                                 onClick={() => moveCategory?.(category.id, 'up')}
-                                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-900 hover:bg-stone-100 disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
+                                className="p-1 rounded-md text-stone-400 hover:text-stone-900 hover:bg-stone-100 disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
                                 title="Поднять категорию выше"
                               >
-                                <ChevronUp className="w-4 h-4" />
+                                <ChevronUp className="w-3.5 h-3.5" />
                               </button>
                               <button
                                 type="button"
                                 disabled={isLast}
                                 onClick={() => moveCategory?.(category.id, 'down')}
-                                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-900 hover:bg-stone-100 disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
+                                className="p-1 rounded-md text-stone-400 hover:text-stone-900 hover:bg-stone-100 disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
                                 title="Опустить категорию ниже"
                               >
-                                <ChevronDown className="w-4 h-4" />
+                                <ChevronDown className="w-3.5 h-3.5" />
                               </button>
                             </div>
                           </td>
-                          <td className="px-6 py-4">
-                            <div className="flex items-center justify-end gap-2">
+                          <td className="px-3 py-2">
+                            <div className="flex items-center justify-end gap-1">
                               <button 
                                 onClick={() => setEditingCategory(category)} 
-                                className="p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-xl transition-colors"
+                                className="p-1.5 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors"
                                 title="Переименовать"
                               >
-                                <Edit2 className="w-4 h-4" />
+                                <Edit2 className="w-3.5 h-3.5" />
                               </button>
                               <button 
                                 type="button"
                                 onClick={() => setDeleteConfirm({ type: 'category', id: category.id, name: category.name })} 
-                                className="p-2 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors" 
+                                className="p-1.5 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" 
                                 title="Удалить категорию"
                               >
-                                <Trash2 className="w-4 h-4" />
+                                <Trash2 className="w-3.5 h-3.5" />
                               </button>
                             </div>
                           </td>
@@ -1081,14 +1070,14 @@ export function AdminPanel({
                     })}
                     {categories.length === 0 && (
                       <tr>
-                        <td colSpan={5} className="px-6 py-12 text-center text-stone-400 font-medium">
-                          <p className="text-base mb-3">Категории пока не созданы</p>
+                        <td colSpan={5} className="px-3 py-8 text-center text-stone-400 font-medium">
+                          <p className="text-sm mb-2">Категории пока не созданы</p>
                           <button
                             type="button"
                             onClick={() => setEditingCategory(null)}
-                            className="px-5 py-2.5 bg-red-600 text-white rounded-xl text-xs font-bold hover:bg-red-700 transition-colors shadow-sm inline-flex items-center gap-1.5"
+                            className="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold hover:bg-red-700 transition-colors shadow-xs inline-flex items-center gap-1.5"
                           >
-                            <Plus className="w-4 h-4" />
+                            <Plus className="w-3.5 h-3.5" />
                             <span>Создать первую категорию</span>
                           </button>
                         </td>
